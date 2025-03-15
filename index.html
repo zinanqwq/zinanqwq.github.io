@@ -23,6 +23,10 @@
             height: 100vh;
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	    -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         @keyframes gradient {
@@ -98,6 +102,10 @@
         <a id="manual-redirect" style="display: none;" href="https://www.catpixel.cn/">如果无法跳转，请点击这里</a>
     </div>
     <script>
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+	    
         const redirectSwitch = document.getElementById('redirect-switch');
         const message = document.getElementById('message');
         const button = document.getElementById('button');
