@@ -4,17 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta property="og:title" content="CATPIXEL - 520MC.TOP"/>
-	<meta property="og:type" content="Minecraft"/>
-	<meta property="og:url" content="https://www.520mc.top/"/>
-	<meta property="og:description" content="CATPIXEL - MinecraftJava服务器欢迎来玩！—— 520MC.TOP"/>
-	<meta property="og:site_name" content="520MC.TOP"/>
-	<meta property="og:locale" content="zh_CN"/>
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>CATPIXEL - 520MC.TOP</title>
+    <meta property="og:title" content="520MC.TOP"/>
+    <meta property="og:type" content="Minecraft"/>
+    <meta property="og:url" content="https://www.520mc.top/"/>
+    <meta property="og:description" content="CATPIXEL - MinecraftJava服务器欢迎来玩！—— 520MC.TOP"/>
+    <meta property="og:site_name" content="520MC.TOP"/>
+    <meta property="og:locale" content="zh_CN"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>520MC.TOP - CATPIXEL</title>
     <style>
+        :root {
+            --cyan: #00ffff;
+            --magenta: #ff00ff;
+            --shadow-cyan: rgba(0, 255, 255, 0.3);
+            --transition: 0.3s ease;
+        }
+
+        html {
+            height: 100%;
+            transition: filter 0.5s ease; /* 应用在根元素确保覆盖全屏 */
+        }
+
         body {
-            background: linear-gradient(50deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            background: linear-gradient(45deg, 
+                #ff0000, #ff7300, #fffb00, #48ff00,
+                #00ffd5, #002bff, #7a00ff, #ff00c8);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             display: flex;
@@ -22,112 +36,187 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	    -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
+            font-family: 'Arial Black', sans-serif;
             user-select: none;
+            overflow: hidden;
+        }
+
+        .grayscale {
+            filter: grayscale(100%) !important; /* 强制覆盖所有元素 */
         }
 
         @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            color: black;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            color: #fff;
+            position: relative;
+            box-shadow: 0 0 50px var(--shadow-cyan);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: linear-gradient(45deg,
+                transparent 25%,
+                rgba(0,255,255,0.1) 50%,
+                transparent 75%);
+            animation: scan 6s linear infinite;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes scan {
+            to { transform: rotate(360deg) translateY(-50%); }
         }
 
         h1 {
-            margin-bottom: 45px;
+            margin: 0 0 40px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px var(--cyan),
+                       0 0 20px var(--cyan),
+                       0 0 30px var(--cyan);
+            animation: neonPulse 1.5s ease-in-out infinite alternate;
         }
 
-        p {
-            margin-bottom: 30px;
+        @keyframes neonPulse {
+            to { text-shadow: 0 0 20px var(--cyan), 0 0 30px var(--cyan); }
         }
 
         button {
-            background-color: #1E90FF;
-            color: white;
+            background: linear-gradient(
+                135deg,
+                var(--cyan) 0%, 
+                var(--magenta) 25%, 
+                var(--cyan) 50%, 
+                var(--magenta) 75%, 
+                var(--cyan) 100%
+            );
+            background-size: 400% 400%;
             border: none;
-            padding: 15px 30px;
-            border-radius: 5px;
+            padding: 15px 40px;
+            border-radius: 30px;
+            color: #000;
+            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: 
+                transform var(--transition),
+                box-shadow var(--transition),
+                filter var(--transition);
+            animation: buttonFlow 6s linear infinite;
+            position: relative;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background var(--transition);
+            border-radius: inherit;
         }
 
         button:hover {
-            background-color: #1D79D4;
+            transform: scale(1.1);
+            box-shadow: 
+                0 0 30px var(--shadow-cyan),
+                0 0 60px rgba(255,0,255,0.3),
+                0 4px 12px rgba(0,0,0,0.2);
+            filter: brightness(0.95);
         }
 
-        a {
-            color: #ff6b6b;
-            text-decoration: none;
-            font-weight: bold;
+        button:hover::after {
+            background: rgba(0, 0, 0, 0.15);
         }
 
-        a:hover {
-            text-decoration: none;
+        @keyframes buttonFlow {
+            to { background-position: 400% 50%; }
+        }
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
         }
     </style>
 </head>
 
 <body>
+    <!-- 黑白模式开关(1是关,2是开) -->
+    <span id="grayscale-switch" hidden>1</span>
+    
+    <!-- 跳转模式开关(1是开,2是关) -->
+    <span id="redirect-switch" hidden>2</span>
+    
+    <div class="particles" id="particles"></div>
+
     <div class="container">
-        <!-- 1(开启重定向)  2(关闭重定向) -->
-        <span id="redirect-switch" style="display: none;">2</span>
-        <h1>CATPIXEL - 520MC.TOP</h1>
+        <h1>520MC.TOP - CATPIXEL</h1>
         <p id="message"></p>
-        <button id="button" style="display: none;">▸ 加入QQ群获取更多信息 ◂</button>
-        <a id="manual-redirect" style="display: none;" href="https://www.catpixel.cn/">如果无法跳转，请点击这里</a>
+        <button id="button" hidden>▸ 加入QQ群获取更多信息 ◂</button>
     </div>
+
     <script>
-        document.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-        });
-	    
-        const redirectSwitch = document.getElementById('redirect-switch');
-        const message = document.getElementById('message');
-        const button = document.getElementById('button');
-        const manualRedirect = document.getElementById('manual-redirect');
+        (function init() {
+            const grayscaleSwitch = document.getElementById('grayscale-switch');
+            if (grayscaleSwitch.textContent === '2') {
+                document.documentElement.classList.add('grayscale');
+            }
 
-        const targetUrl = 'https://www.catpixel.cn/';
+            const particles = document.getElementById('particles');
+            const fragment = document.createDocumentFragment();
+            
+            for(let i = 0; i < 100; i++) {
+                const size = Math.random() * 6;
+                const particle = document.createElement('div');
+                
+                Object.assign(particle.style, {
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    background: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animation: `
+                        float ${3 + Math.random() * 5}s infinite linear,
+                        pulse ${1 + Math.random() * 2}s infinite alternate
+                    `,
+                    borderRadius: '50%',
+                    opacity: Math.random() * 0.5,
+                    position: 'absolute'
+                });
+                
+                fragment.appendChild(particle);
+            }
+            particles.appendChild(fragment);
 
-        if (redirectSwitch.textContent === '1') {
-            message.textContent = '正在为您跳转到CATPIXEL官网...';
-            manualRedirect.style.display = 'block';
+            const config = {
+                redirectUrl: 'https://www.catpixel.cn/',
+                qqGroupUrl: 'https://qm.qq.com/cgi-bin/qm/qr?k=OoC4bwwT3OXt35_JnQhfsk1-rO87EAML&jump_from=webapi&authKey=On5V6WNOz/9aiNa+4yOpOgQngXVqu1jl3fzWy1HFXZNPLG8y6mJh7q046aqUTl2k'
+            };
 
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 0);
-        } else {
-            message.textContent = '抱歉，网站正在维护中，请稍后再来。';
-            button.style.display = 'block';
-            button.addEventListener('click', () => {
-                window.open('https://qm.qq.com/cgi-bin/qm/qr?k=OoC4bwwT3OXt35_JnQhfsk1-rO87EAML&jump_from=webapi&authKey=On5V6WNOz/9aiNa+4yOpOgQngXVqu1jl3fzWy1HFXZNPLG8y6mJh7q046aqUTl2k', '_blank');
-            });
-        }
+            const domMap = {
+                message: document.getElementById('message'),
+                button: document.getElementById('button')
+            };
+
+            document.addEventListener('contextmenu', e => e.preventDefault());
+
+            if (document.getElementById('redirect-switch').textContent === '1') {
+                domMap.message.textContent = '正在为您跳转到CATPIXEL官网...';
+                setTimeout(() => location.href = config.redirectUrl, 0);
+            } else {
+                domMap.message.textContent = '抱歉，网站正在维护中，请稍后再来。';
+                domMap.button.hidden = false;
+                domMap.button.addEventListener('click', () => open(config.qqGroupUrl, '_blank'));
+            }
+        })();
     </script>
 </body>
-
 </html>
