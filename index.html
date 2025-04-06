@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="default">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="description" content="520MC.TOP - MinecraftJava服务器欢迎来玩~">
+    <meta name="keywords" content="Minecraft, 我的世界, MinecraftServer, 我的世界服务器, 520MC, 我爱你MC">
+    <meta property="og:title" content="520MC.TOP - 我爱你MC"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://www.520mc.top/"/>
+    <meta property="og:description" content="520MC.TOP - MinecraftJava服务器欢迎来玩~"/>
+    <meta property="og:site_name" content="520MC.TOP - 我爱你MC"/>
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:image" content="https://www.520mc.top/favicon.ico"/>
+    <link rel="preload" as="style" href="data:text/css;base64,LmdyYXlzY2FsZSB7ZmlsdGVyOiBncmF5c2NhbGUoMTAwJSk7fQ==">
+    <title>520MC.TOP - 我爱你MC</title>
+    <meta name="mode-switch" content="2">
+    <meta name="grayscale-mode" content="1">
+    <style>
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            background: transparent;
+        }
+        html {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            overflow-y: auto;
+        }
+
+        .container::after,
+        .maintenance-mode::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            background: url(https://s21.ax1x.com/2025/04/06/pEcmHvn.jpg) no-repeat center/contain;
+            border-radius: 15px;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover::after,
+        .maintenance-mode:hover::after {
+            transform: scale(1.1);
+        }
+
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --bg-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --transition-base: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @font-face {
+            font-family: 'SystemUI';
+            src: local('Segoe UI'), local('PingFang SC'), local('Microsoft YaHei');
+            font-display: swap;
+        }
+
+        html.grayscale {
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            font-family: SystemUI, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-gradient);
+            padding: 20px;
+            text-align: center;
+            user-select: none;
+            overflow-y: auto;
+        }
+
+        .container,
+        .maintenance-mode {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease-out;
+            will-change: transform, opacity;
+        }
+
+        .maintenance-mode {
+            display: none;
+        }
+
+        .qq-group {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white !important;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: var(--transition-base);
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease-out, height 0.3s ease-out;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+            background: #ff5252 !important;
+        }
+
+        .btn:active::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        h1 {
+            color: #2d3436;
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        p {
+            color: #636e72;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container, .maintenance-mode {
+                padding: 50px 20px 30px;
+            }
+            
+            .container::after,
+            .maintenance-mode::after {
+                width: 40px;
+                height: 40px;
+                top: 10px;
+                right: 10px;
+                border-radius: 12px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            p {
+                font-size: 1em;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .container::after,
+            .maintenance-mode::after {
+                filter: brightness(0.8);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 aria-label="页面跳转中">🚀 页面跳转中 🚀</h1>
+        <div class="loader" role="status" aria-label="加载中"></div>
+        <p>若长时间未响应，请点击下方按钮▾</p>
+        <a href="https://www.catpixel.cn" class="btn" role="button">立即跳转</a>
+    </div>
+
+    <div class="maintenance-mode">
+        <h1 aria-label="维护公告">维护公告</h1>
+        <p>网站正在维护，请稍后再访问</p>
+        <div class="qq-group">
+            <a href="https://qm.qq.com/cgi-bin/qm/qr?k=Z8sToITKOf0AvHNjmYiqUb4Kq46IDJ-X&jump_from=webapi&authKey=0yKaSPgECCNAWu6qZaenvekQDNNL9FUdiTpcuHqHd9KsX6Izgwb396cS1KjHLK/2" 
+               class="btn" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               role="button"
+               aria-label="加入QQ群">
+               ▸ 加入QQ群获取更多信息 ◂
+            </a>
+        </div>
+    </div>
+
+    <script>
+        requestIdleCallback(() => {
+            const modeSwitch = document.querySelector('meta[name="mode-switch"]').content;
+            const grayscaleMode = document.querySelector('meta[name="grayscale-mode"]').content;
+
+            document.title = modeSwitch === '2' 
+                ? "520MC.TOP - 正在维护…" 
+                : "520MC.TOP - 正在重定向…";
+
+            if (grayscaleMode === '2') {
+                document.documentElement.classList.add('grayscale');
+            }
+
+            if (modeSwitch === '2') {
+                document.querySelector('.container').style.display = 'none';
+                document.querySelector('.maintenance-mode').style.display = 'block';
+            } else {
+                const preloadLink = document.createElement('link');
+                preloadLink.href = 'https://www.catpixel.cn';
+                preloadLink.rel = 'prefetch';
+                document.head.appendChild(preloadLink);
+
+                setTimeout(() => {
+                    window.location.href = 'https://www.catpixel.cn';
+                }, 1500);
+            }
+
+            window.addEventListener('error', (e) => {
+                console.error('页面错误:', e);
+                document.querySelector('.loader').style.display = 'none';
+                alert('发生意外错误，请刷新页面');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const disableSelect = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            };
+            document.addEventListener('contextmenu', disableSelect);
+            document.addEventListener('selectstart', disableSelect);
+
+            if ('ontouchstart' in window) {
+                document.documentElement.style.touchAction = 'manipulation';
+            }
+        });
+    </script>
+</body>
+</html>
