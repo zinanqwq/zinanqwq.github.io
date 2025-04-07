@@ -1,3 +1,4 @@
+<meta name="mode-switch" content="2">
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="default">
 <head>
@@ -19,6 +20,7 @@
     <meta name="mode-switch" content="2">
     <meta name="grayscale-mode" content="1">
     <style>
+        /* 原有CSS样式保持不变 */
         ::-webkit-scrollbar {
             width: 0;
             height: 0;
@@ -265,22 +267,27 @@
     </div>
 
     <script>
-        requestIdleCallback(() => {
+        (function() {
             const modeSwitch = document.querySelector('meta[name="mode-switch"]').content;
             const grayscaleMode = document.querySelector('meta[name="grayscale-mode"]').content;
 
+            // 设置标题
             document.title = modeSwitch === '2' 
                 ? "520MC.TOP - 正在维护…" 
                 : "520MC.TOP - 正在重定向…";
 
+            // 灰度模式处理
             if (grayscaleMode === '2') {
                 document.documentElement.classList.add('grayscale');
             }
 
+            // 模式切换逻辑
             if (modeSwitch === '2') {
+                // 维护模式：显示维护页面，不跳转
                 document.querySelector('.container').style.display = 'none';
                 document.querySelector('.maintenance-mode').style.display = 'block';
             } else {
+                // 正常模式：预加载目标页面并跳转
                 const preloadLink = document.createElement('link');
                 preloadLink.href = 'https://www.catpixel.cn';
                 preloadLink.rel = 'prefetch';
@@ -291,13 +298,15 @@
                 }, 1500);
             }
 
+            // 全局错误处理
             window.addEventListener('error', (e) => {
                 console.error('页面错误:', e);
                 document.querySelector('.loader').style.display = 'none';
                 alert('发生意外错误，请刷新页面');
             });
-        });
+        })();
 
+        // 禁止选择文本和右键菜单
         document.addEventListener('DOMContentLoaded', () => {
             const disableSelect = (e) => {
                 e.preventDefault();
@@ -307,6 +316,7 @@
             document.addEventListener('contextmenu', disableSelect);
             document.addEventListener('selectstart', disableSelect);
 
+            // 移动端优化
             if ('ontouchstart' in window) {
                 document.documentElement.style.touchAction = 'manipulation';
             }
