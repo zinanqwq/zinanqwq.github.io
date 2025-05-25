@@ -213,6 +213,17 @@
             100% { transform: rotate(360deg); }
         }
         
+        /* 一言样式 */
+        .hitokoto {
+            text-align: center;
+            padding: 15px 0;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
         /* 响应式设计 */
         @media (max-width: 768px) {
             .server-card {
@@ -463,6 +474,7 @@
     </div>
     
     <div class="footer">
+        <div class="hitokoto" id="hitokoto">"加载中..."</div>
         <p>&copy; 2023-2025 520MC.TOP - 版权所有</p>
     </div>
     
@@ -539,8 +551,23 @@
             }
         }
         
-        // 页面加载完成后获取服务器信息
-        window.addEventListener('load', fetchServerInfo);
+        // 获取一言
+        async function fetchHitokoto() {
+            try {
+                const response = await fetch('https://v1.hitokoto.cn/');
+                const data = await response.json();
+                document.getElementById('hitokoto').textContent = '"' + data.hitokoto + '"';
+            } catch (error) {
+                console.error('获取一言失败:', error);
+                document.getElementById('hitokoto').textContent = '"每一次相遇都是久别重逢。"';
+            }
+        }
+        
+        // 页面加载完成后获取服务器信息和一言
+        window.addEventListener('load', function() {
+            fetchServerInfo();
+            fetchHitokoto();
+        });
     </script>
 </body>
 </html>
